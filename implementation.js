@@ -59,7 +59,11 @@ var redrawnLayers = [
     }
 ];
 
-/** Biome Data (Screen icons) */
+// Biomes
+/** 
+ * Biome Data (Screen icons) 
+ * @type {Array<{name: string, ident: string, iconId: string, color: string}>}
+ */
 var biomes = [
     {
         name: "Terrace",
