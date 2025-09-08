@@ -166,6 +166,9 @@ transform: translateX(22px);
     margin-top:10px;
 }
 
+.menu__disclaimer {
+    text-align: center;
+}
 .rrlogo figure img {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
