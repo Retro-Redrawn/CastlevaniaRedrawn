@@ -111,18 +111,18 @@ function loadLayer (areaArray, areaImageArray, areaOldImageArray, layerSubfolder
         // Create and set up new image
         var img = new Image();
         areaImageArray.push(img); // Add to array before loading to maintain order
-    // Assign a function as the onload handler (don't call it immediately)
-    img.onload = function() { onAreaImageLoaded(areaImageArray); };
-    // Use GIF extension only when the area explicitly requests animation
-    var newExt = (area && area.animation) ? '.gif' : '.png'; // Use animated image?
-    img.src = createImageLink(layerSubfolder, NEW_STYLE_NAME, area.ident, NEW_SLICE_SUFFIX, newExt);
+        // Assign a function as the onload handler (don't call it immediately)
+        img.onload = function() { onAreaImageLoaded(areaImageArray); };
+        // Use GIF extension only when the area explicitly requests animation
+        var newExt = (area && area.animation) ? '.gif' : '.png'; // Use animated image?
+        img.src = createImageLink(layerSubfolder, NEW_STYLE_NAME, area.ident, NEW_SLICE_SUFFIX, newExt);
             
         // Create and set up old image
         var oldimg = new Image();
         areaOldImageArray.push(oldimg); // Add to array before loading to maintain order
-    // Assign correct onload handler and pass the old-image array
-    oldimg.onload = function() { onAreaImageLoaded(areaOldImageArray); };
-    oldimg.src = createImageLink(layerSubfolder, OLD_STYLE_NAME, area.ident, OLD_SLICE_SUFFIX, '.png');
+        // Assign correct onload handler and pass the old-image array
+        oldimg.onload = function() { onAreaImageLoaded(areaOldImageArray); };
+        oldimg.src = createImageLink(layerSubfolder, OLD_STYLE_NAME, area.ident, OLD_SLICE_SUFFIX, '.png');
     }
 }
 
