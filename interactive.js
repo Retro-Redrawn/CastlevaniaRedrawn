@@ -27,6 +27,18 @@ var currentZoom = 1; //lerp
 var zoomCenter = {x: 0, y: 0}; // must be whole numbers
 var currentPos = {x: 0, y: 0}; //lerp
 
+// URL Args
+const urlFocus = parseFocusFromUrl();
+// Update layer if applicable
+if (urlFocus&& urlFocus.layer) {
+    for (let i=0; i< redrawnLayers.length; i++) {
+        if (redrawnLayers[i].name === urlFocus.layer) {
+            activeLayerIndex = i;
+            break;
+        }
+    }
+}
+
 // Map
 const NEW_STYLE_NAME = 'new';
 const OLD_STYLE_NAME = 'old';
@@ -41,6 +53,7 @@ var mapZones = null;
 var currentMapStyle = NEW_STYLE_NAME;
 var viewport = null;
 var bordersDisabled = false;
+var preferStaticImages = false; // When true, use .png versions even if animation is available
 
 // Auto Highlight
 var autoHighlightEnabled = true;
@@ -94,7 +107,6 @@ loadImages()
 window.addEventListener('wheel', onMouseWheel);
 window.addEventListener('resize', onResize);
 window.addEventListener('keydown', onKeyDown);
-//
 
 /** Loads new & old images pertaining to a single layer.
  * 
@@ -207,10 +219,18 @@ function init () {
     }
 
     // Prepare the canvas display
-    setupCanvas();
+    setupCanvas(true);
 
     // Select & focus on a random area & open it in DOM
+    // Use URL-provided area if offered, otherwise random
     var startingArea = activeAreas[Math.floor(Math.random() * activeAreas.length)]
+    if (urlFocus && urlFocus.ident) {
+        const areaToFocus = activeAreas.find(a => a.ident === urlFocus.ident);
+        if (areaToFocus) {
+            startingArea = areaToFocus;
+        }
+    }
+    
     focusOnArea(startingArea)
     openAreaInDOM(startingArea)
 
@@ -219,7 +239,7 @@ function init () {
 }
 
 /** Prepares the canvas display */ 
-function setupCanvas () {
+function setupCanvas (useDefaultPosition) {
     app.stage.removeChildren()
 
     // Establish PIXI containers
@@ -243,6 +263,9 @@ function setupCanvas () {
     mapZones = new PIXI.Container()
     mapZones.name = "Map Zones" 
     map.addChild(mapZones)
+    
+    let oldx = currentPos.x;
+    let oldy = currentPos.y;
     
     buildMap()
 
@@ -282,14 +305,26 @@ function setupCanvas () {
     viewport.filters = [colorFilter]
 
     // Set default position/zoom
-    map.scale.set(zoomMin)
-    map.x = -((map.width) - (window.innerWidth / 2)) * map.scale.x
-    map.y = -((map.height) - (window.innerHeight / 2)) * map.scale.x
+    if (useDefaultPosition) {
+        map.scale.set(zoomMin)
+        map.x = -((map.width) - (window.innerWidth / 2)) * map.scale.x
+        map.y = -((map.height) - (window.innerHeight / 2)) * map.scale.x
 
-    zoomCenter.x = map.x
-    currentPos.x = map.x
-    currentPos.y = map.y
-    zoomCenter.y = map.y
+        currentPos.x = map.x
+        currentPos.y = map.y
+        zoomCenter.x = map.x
+        zoomCenter.y = map.y
+    }
+    else
+    {
+        map.scale.set(currentZoom)
+        map.x = oldx;
+        map.y = oldy;
+        currentPos.x = oldx;
+        currentPos.y = oldy;
+        zoomCenter.x = oldx;
+        zoomCenter.y = oldy;
+    }
 }
 
 function buildMap () {
@@ -314,10 +349,10 @@ function buildMap () {
         var areaImage = activeImages[i];
 
             var sprite = null;
-            if (currentMapStyle === NEW_STYLE_NAME && area && area.animation && areaImage.src.match(/\.gif$/i)) {
-                sprite = createCanvasGifSprite(areaImage);
+            if (currentMapStyle === NEW_STYLE_NAME && area && area.animation && !preferStaticImages && areaImage && areaImage.src && areaImage.src.match(/\.gif$/i)) {
+                sprite = createCanvasGifSprite(area, areaImage);
             } else {
-            // Fallback: use the normal texture path (works for PNGs and static GIF fallbacks)
+            // Fallback: use the normal texture path
             var src = createImageLink(redrawnLayers[activeLayerIndex].name, currentMapStyle, area.ident);
             sprite = new PIXI.Sprite.from(src);
         }
@@ -447,8 +482,7 @@ function setUpAreas () {
         for (let k = 0; k< iconFiles.length; k++) {
             if (iconFiles[k].iconId === materialIcon)
             {
-                iconBlock = 
-                `<img src=${iconFiles[k].path} class="custom-icons">`;
+                iconBlock = `<img src=${iconFiles[k].path} class="custom-icons">`;
                 k = iconFiles.length;
             }
         }
@@ -457,10 +491,8 @@ function setUpAreas () {
         var html = 
         `<li class="area" title="${area.title}" style="background-color:${backgroundColor}" onclick="focusOnArea('${area.title}')">
             <div class="area__header" >
-                ${iconBlock}
-                <span>
-                    ${area.title}
-                </span>
+                ${iconBlock}<span>${area.title}</span>
+                <button class="area__copy" title="Copy link" onclick="event.stopPropagation(); copyAreaLink('${redrawnLayers[activeLayerIndex].name}','${area.ident}')">🔗</button>
             </div>
             <div class="area__info">
                 <div class="area__info__inner">
@@ -476,6 +508,35 @@ function setUpAreas () {
         </li>`
         areaList.innerHTML += html
     }
+}
+
+// Copy area link to clipboard (uses current path + query params)
+function copyAreaLink(layerName, areaIdent) {
+    var base;
+    try {
+        base = window.location.origin + window.location.pathname;
+    } catch (e) {
+        base = window.location.href.split('?')[0];
+    }
+    var url = base + `?layer=${encodeURIComponent(layerName)}&ident=${encodeURIComponent(areaIdent)}`;
+
+    // Use modern Clipboard API when available (requires HTTPS or localhost)
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard.writeText(url)
+        .catch(function(err) {
+            CopyLinkPrompt(url);
+        });
+        return;
+    }
+
+    CopyLinkPrompt(url);
+}
+
+/**
+ * Fallback for older browsers: show prompt with URL for manual copy
+ */
+function CopyLinkPrompt(url) {
+    try { window.prompt('Copy this URL for a direct focus link!', url); } catch (e) { /* ignore */ }
 }
 
 /** Creates a rectangular fill relative to a PIXIjs graphic (effectively its outline) */
@@ -739,14 +800,25 @@ function onDragEnd () {
 function changeTab (n) {
     var tabs = document.querySelectorAll('.menu__tab')
     var elems = document.querySelectorAll('.menu__content >*')
+
     for (let i = 0; i < tabs.length; i++) {
         var tab = tabs[i]
         tab.classList.remove('active')
         elems[i].classList.remove('active')
     }
+
+    elems[n].scrollTo(0,0); // Reset scroll
+
     tabs[n].classList.add('active')
     elems[n].classList.add('active')
-    elems.children
+
+    // Focus on selected area if in the areas list
+    if (n === 0) {
+        const activeArea = elems[n].querySelector('.area.active');
+        if (activeArea) {
+            activeArea.scrollIntoView();
+        }
+    }
 }
 
 function onClick (e) {
@@ -1277,19 +1349,19 @@ function changeLayer(layer) {
     const tabs = document.querySelectorAll('#layers li button')
     let activeLayerName = redrawnLayers[activeLayerIndex].name;
     tabs.forEach((x) => { if (!x.classList.contains(activeLayerName)) {x.classList.remove('active')} else {x.classList.add('active')} })
-    setupCanvas()
+    setupCanvas(true)
     
     // Adjust canvas focus
-    focusOnArea(activeAreas[Math.floor(Math.random() * layerCount)])
+    focusOnArea(activeAreas[Math.floor(Math.random() * activeAreas.length)])
 }
 
 /** Create a PIXI sprite backed by a canvas for the provided HTMLImageElement (GIF fallback).
  * If GifPlayer is available, it will be used to animate the canvas. Returns the sprite.
  */
-function createCanvasGifSprite(areaImage) {
+function createCanvasGifSprite(area, areaImage) {
     var canvas = document.createElement('canvas');
-    canvas.width = areaImage.naturalWidth || 1;
-    canvas.height = areaImage.naturalHeight || 1;
+    canvas.width = area.point.width || 1;
+    canvas.height = area.point.height || 1;
     var ctx = canvas.getContext('2d');
     try { ctx.drawImage(areaImage, 0, 0); } catch (e) { }
     var texture = PIXI.Texture.from(canvas);
@@ -1352,4 +1424,23 @@ function updateGifSprite(sprite) {
     } catch (e) {
         // swallow errors to avoid breaking tick
     }
+}
+
+/** Parse optional URL focus parameters. Returns {ident, layer} or null. */
+function parseFocusFromUrl() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const ident = params.get('ident');
+        const layer = params.get('layer');
+        if (!ident && !layer) return null;
+        return { ident: ident || null, layer: layer || null };
+    } catch (e) {
+        return null;
+    }
+}
+
+/** Called when the user toggles the option to prefer static images over animated GIFs. */
+function onPreferStaticToggled(isStatic) {
+    preferStaticImages = !!isStatic;
+    setupCanvas(false);
 }

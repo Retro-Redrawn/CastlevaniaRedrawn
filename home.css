@@ -32,6 +32,61 @@ a{
     z-index:1;
     cursor: pointer;
 }
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    bottom: 5px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #241010;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 20px;
+width: 20px;
+left: 4px;
+bottom: 2px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+border-radius: 50%;
+}
+
+input:checked + .slider {
+background-color: #67220c;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px #d23a22;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(22px);
+-ms-transform: translateX(22px);
+transform: translateX(22px);
+}
+  
+
 .menu:hover{
     transform: translateX(-100%);
 }
@@ -103,71 +158,29 @@ a{
     margin-top:20px;
 
 }
-.menu__disclaimer {
-    text-align: center;
+.rrlogo {
+      text-align: center;
 }
 .menu__actions{
     display:flex;
     margin-top:10px;
 }
 
-/* The slider */
-.switch{
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-    bottom: 5px;
+.rrlogo figure img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
 }
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
+.rrlogo figure:hover img {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
 
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #241010;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 24px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 2px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #67220c;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #d23a22;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(22px);
-    -ms-transform: translateX(22px);
-    transform: translateX(22px);
-  }
-
-/* MENUTABS */
+.menu__actions{
+    display:flex;
+    margin-top:10px;
+}
 .menu__tab{
     cursor: pointer;
     background-color:#222;
@@ -204,6 +217,41 @@ a{
     display:block;
 }
 
+
+/* Themed scrollbars for menu panels */
+.menu__content, .menu__content > * {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: rgba(255,255,255,0.12) transparent;
+}
+
+/* WebKit-based browsers */
+.menu__content::-webkit-scrollbar, .menu__content > *::-webkit-scrollbar {
+    width: 10px;
+}
+.menu__content::-webkit-scrollbar-track, .menu__content > *::-webkit-scrollbar-track {
+    background: transparent;
+}
+.menu__content::-webkit-scrollbar-thumb, .menu__content > *::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+.menu__content::-webkit-scrollbar-thumb:hover, .menu__content > *::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.14);
+}
+
+/* Slightly more prominent when menu is active */
+.menu.active .menu__content > *::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.12);
+}
+.menu.active .menu__content > *::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+.bgmPlayer{
+    width: 100%;
+}
 #areaList, #settings, #about {
     padding:5px;
     margin:0;
@@ -215,8 +263,8 @@ a{
     padding:0;
 }
 #layers li button{
-    width:90%;
-    height:40px;
+    width:85%;
+    height:32px;
     position:relative;
     transition: width .2s;
     cursor: pointer;
@@ -227,12 +275,11 @@ a{
     border-top-right-radius: 5px;
     text-shadow: 1px 0px 3px black, -1px 0px 3px black, 0px 0px 3px black, 0px 0px 3px black, 0px 0px 3px black; 
 }
-
 #layers li button:hover{
-    width:95%;
+    width:90%;
 }
 #layers li button.active{
-    width:100%;
+    width:95%;
 }
 
 #layers li button span{
@@ -245,9 +292,6 @@ a{
 #about {
     font-size: 0.8em;
     line-height: 1.5em;
-}
-#bgmPlayer{
-    width: 100%;
 }
 .area {
     padding:5px;
@@ -270,6 +314,7 @@ a{
     cursor:pointer;
     display:flex;
     align-items: center;
+    position: relative;
 }
 .material-icons{
     margin-right:5px;
@@ -451,3 +496,27 @@ a{
     padding-left: 20px;
     padding-right: 20px;
 }
+
+/* Copy button in area header */
+.area__header{ position: relative; }
+.area__copy{
+    position: absolute;
+    right: 6px;
+    top: 40%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: none; /* hidden by default */
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+.area__copy .material-icons{ font-size: 16px; line-height: 1; }
+.area__copy:hover{ background: rgba(255,255,255,0.06); }
+
+/* Show copy button only when the area is active */
+.area.active .area__header .area__copy{ display: inline-flex; }
