@@ -24,6 +24,8 @@
     
     <!--Retro Redrawn: CSS-->
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="options.css">
 </head>
 <body class="content">
     <div id="app">
@@ -63,24 +65,39 @@
                         <hr>
                         <ul id="areas"></ul>
                     </div>
-                    <div id="settings">
-                        <hr>
-                        <div>
-                            <input class="settings__checkbox" type="checkbox" id="disableBlur"><label for="disableBlur">Disable Zoom Blur</label> <br><br>
-                            <input class="settings__checkbox" type="checkbox" id="areaBorderToggle" oninput="onAreaBorderToggled(this.checked)"><label for="areaBorderToggle">Hide Area Border</label> 
-                        </div><br>
-                        <hr>
-                        <div>
-                            <label>Camera Speed</label><br>
-                            <input type="range" min="0.5" max="2" value="1" step="0.25" id="cameraSpeed" oninput="changeCameraSpeed(this.value)">
-                            <small>1x</small>
+                    <div id="settings" class="options-container">
+                        <div class="options-section">
+                            <h3>Display Settings</h3>
+                            <div class="option-row">
+                                <label class="option-label" for="disableBlur">Disable Zoom Blur</label>
+                                <div class="option-control">
+                                    <input class="option-checkbox" type="checkbox" id="disableBlur">
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <label class="option-label" for="areaBorderToggle">Hide Area Border</label>
+                                <div class="option-control">
+                                    <input class="option-checkbox" type="checkbox" id="areaBorderToggle" oninput="onAreaBorderToggled(this.checked)">
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <label>Tour Speed</label><br>
-                            <input type="range" min="0.5" max="2" value="1" step="0.25" id="tourCameraSpeed" oninput="changeTourCameraSpeed(this.value)">
-                            <small>1x</small>
+                        <div class="options-section">
+                            <h3>Camera Controls</h3>
+                            <div class="option-row">
+                                <label class="option-label" for="cameraSpeed">Camera Speed</label>
+                                <div class="option-control">
+                                    <input type="range" min="0.5" max="2" value="1" step="0.25" id="cameraSpeed" oninput="changeCameraSpeed(this.value)">
+                                    <small>1x</small>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <label class="option-label" for="tourCameraSpeed">Tour Speed</label>
+                                <div class="option-control">
+                                    <input type="range" min="0.5" max="2" value="1" step="0.25" id="tourCameraSpeed" oninput="changeTourCameraSpeed(this.value)">
+                                    <small>1x</small>
+                                </div>
+                            </div>
                         </div>
-                        <hr>
                     </div>
                     <div id="about">
                         <p>Castlevania Redrawn is a collaborative art project by a group of passionate pixel artists from across the world.</p>
@@ -88,7 +105,7 @@
                         <hr>
                         Check out more projects at...
                         <div class="rrlogo">
-                            <a href="http://retroredrawn.com/"><img id="rrlogo_img" src="img/website/retro_redrawn_logo.png" alt = "Retroredrawn Logo"></a>
+                            <a href="https://retroredrawn.com/"><img id="rrlogo_img" src="img/website/retro_redrawn_logo.png" alt = "Retro Redrawn Logo"></a>
                         </div>
                         <hr>
                         <p>Pan and zoom the map the same you would on sites like Google Maps.</p>
@@ -107,10 +124,27 @@
                 </div>
                 <br>
                 <div class="bgm">
-                    <audio id="bgmPlayer" controls autoplay loop>
-                        <source src="audio/castlevania_redrawn_medley_altV2_toribobs.mp3" type="audio/mpeg">
-                        Your browser does not support the audio component.
-                    </audio>
+                    <div class="custom-player" data-player-num="0" data-autoplay="true">
+                        <div class="player-controls">
+                            <button class="control-btn" data-control="restart" title="Restart"><span class="material-icons">replay</span></button>
+                            <button class="control-btn" data-control="play-pause" title="Play/Pause"><span class="material-icons">play_arrow</span></button>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <span class="time-display">0:00</span>
+                            </div>
+                        </div>
+                        <div class="track-info-container">
+                            <div class="track-info-scroll">
+                                <div class="track-info">
+                                    <span class="track-title"></span>
+                                    <span class="track-info-separator">by</span>
+                                    <span class="track-artist"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tour">
                     <button id="tourButton" onclick="toggleTour()"><span class="material-icons">play_arrow</span> <span>Begin Tour</span></button>
@@ -139,6 +173,7 @@
             </div>
             <div class="area__info__name">
                 <a href="" target="_blank" title=""></a>
+        
             </div>
         </div>
 
@@ -160,7 +195,12 @@
 <script src="https://retro-redrawn.github.io/Retro-Redrawn-Data/ArtistData.js"></script>
 <script src="https://retro-redrawn.github.io/Retro-Redrawn-Data/RedrawnArtistDataUtils.js"></script>
 <script src="implementation.js"></script>
+<!-- GIF decoding: omggif + lightweight player (used when browser doesn't expose animated frames to canvas) -->
+<script src="https://cdn.jsdelivr.net/npm/omggif@1.0.10/omggif.min.js"></script>
+<script src="vendor/gif-player-omggif.js"></script>
 <script src="interactive.js"></script>
+<script src="audio-player.js"></script>
 <script src="maputils.js"></script>
+<script src="interactive_overrides.js"></script>
 
 </html>
