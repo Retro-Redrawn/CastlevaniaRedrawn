@@ -14,8 +14,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -38,8 +38,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -62,8 +62,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -86,8 +86,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -110,8 +110,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -134,8 +134,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -158,8 +158,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -182,8 +182,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -206,8 +206,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -230,8 +230,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "boss",
@@ -254,8 +254,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -278,8 +278,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -302,8 +302,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -326,8 +326,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -350,8 +350,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -374,8 +374,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -398,8 +398,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -422,8 +422,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -446,8 +446,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "boss",
@@ -470,8 +470,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -494,8 +494,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -518,8 +518,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -542,8 +542,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -566,8 +566,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -590,8 +590,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -614,8 +614,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -638,8 +638,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: -2,
+      height: -2
     },
     pan: "horizontal",
     type: "terrace",
@@ -662,8 +662,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -686,8 +686,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -710,8 +710,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -734,8 +734,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: -2,
+      height: -2
     },
     pan: "horizontal",
     type: "boss",
@@ -758,8 +758,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -782,8 +782,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -806,8 +806,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -830,8 +830,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -854,8 +854,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -878,8 +878,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -902,8 +902,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -926,8 +926,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -950,8 +950,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "underground",
@@ -974,8 +974,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "vertical",
     type: "other",
@@ -998,8 +998,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1022,8 +1022,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1046,8 +1046,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1070,8 +1070,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1094,8 +1094,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1118,8 +1118,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "boss",
@@ -1142,8 +1142,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1166,8 +1166,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1190,8 +1190,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1214,8 +1214,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1238,8 +1238,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1262,8 +1262,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1286,8 +1286,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1310,8 +1310,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1334,8 +1334,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1358,8 +1358,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1382,8 +1382,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1406,8 +1406,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "boss",
@@ -1430,8 +1430,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1454,8 +1454,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1478,8 +1478,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1502,8 +1502,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1526,8 +1526,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1550,8 +1550,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1574,8 +1574,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1598,8 +1598,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1622,8 +1622,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1646,8 +1646,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1670,8 +1670,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "terrace",
@@ -1694,8 +1694,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "castle",
@@ -1718,8 +1718,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "boss",
@@ -1742,8 +1742,8 @@ var areas = [
     offset: {
       x: null,
       y: null,
-      width: null,
-      height: null
+      width: 0,
+      height: 0
     },
     pan: "horizontal",
     type: "other",
