@@ -747,7 +747,7 @@ var areas = [
     order: 32,
     title: "P-1",
     ident: "P-1",
-    artistId: "LOMB",
+    artistId: "TETR",
     animation: false,
     point: {
       x: 4384,
