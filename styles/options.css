@@ -19,11 +19,11 @@
 .option-row {
     display: flex;
     align-items: center;
+    gap: 8px;
     margin-bottom: 12px;
     padding: 8px;
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .option-label {
@@ -33,6 +33,51 @@
 
 .option-control {
     flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Sliders drawn like the audio player's progress bar: thin translucent track, white handle */
+.option-control input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    min-width: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.option-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.option-control input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.option-control input[type="range"]::-moz-range-progress {
+    height: 4px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.option-control small {
+    color: #aaa;
+    min-width: 3em;
+    text-align: right;
 }
 
 select.option-select {
@@ -54,18 +99,18 @@ select.option-select:focus {
     width: 18px;
     height: 18px;
     margin-right: 8px;
+    accent-color: rgb(53, 199, 53);
 }
 
-/* Dark theme support */
 @media (prefers-color-scheme: dark) {
     .options-container {
         color: #ddd;
     }
-    
+
     .option-row {
         background-color: #333;
     }
-    
+
     select.option-select {
         background-color: #333;
         border-color: #444;

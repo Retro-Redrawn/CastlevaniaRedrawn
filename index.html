@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no"> 
     <meta property="og:title" content="Castlevania Redrawn">
     <meta property="og:site_name" content="Retro Redrawn">
-    <meta property="og:url" content="http://retroredrawn.com/">
     <meta property="og:description" content="Castlevania Redrawn is a collaborative art project by a group of passionate pixel artists from across the world.">
+    <meta property="og:url" content="https://retroredrawn.com/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="img\website\CastlevaniaRedrawn_Thumbnail.png">
     <link rel="icon" type="image/png" href="favicon.png">
@@ -23,13 +23,20 @@
     <script src="https://cdn.jsdelivr.net/npm/pixi-filters@4.2/dist/pixi-filters.js"></script>
     
     <!--Retro Redrawn: CSS-->
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="player.css">
-    <link rel="stylesheet" href="options.css">
+    <link rel="stylesheet" href="styles/area_list.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/copy_toast.css">
+    <link rel="stylesheet" href="styles/error_message.css">
+    <link rel="stylesheet" href="styles/loading.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/player.css">
+    <link rel="stylesheet" href="styles/options.css">
+    <link rel="stylesheet" href="styles/zoom_indicator.css">
 </head>
 <body class="content">
     <div id="app">
         <canvas id="canvas"></canvas>
+        <div id="zoomIndicator" class="zoom-indicator" aria-hidden="true"></div>
         <div id="error"></div>
         <div class="menu active" id="menu-bar">
             <div class="menu__button" onclick="toggleMenu()"></div>
@@ -65,6 +72,19 @@
                                 </div>
                             </div>
                             <div class="option-row">
+                                <label class="option-label" for="areaDefaultZoom">Area Default Zoom</label>
+                                <div class="option-control">
+                                    <select class="option-select" id="areaDefaultZoom">
+                                        <option value="area" selected>Area-specific</option>
+                                        <option value="1">1x</option>
+                                        <option value="2">2x</option>
+                                        <option value="3">3x</option>
+                                        <option value="4">4x</option>
+                                        <option value="5">5x</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="option-row">
                                 <label class="option-label" for="areaBorderToggle">Hide Area Border</label>
                                 <div class="option-control">
                                     <input class="option-checkbox" type="checkbox" id="areaBorderToggle" oninput="onAreaBorderToggled(this.checked)">
@@ -79,6 +99,12 @@
                         </div>
                         <div class="options-section">
                             <h3>Camera Controls</h3>
+                            <div class="option-row">
+                                <label class="option-label" for="continuousZoom">Continuous Zoom</label>
+                                <div class="option-control">
+                                    <input class="option-checkbox" type="checkbox" id="continuousZoom">
+                                </div>
+                            </div>
                             <div class="option-row">
                                 <label class="option-label" for="cameraSpeed">Camera Speed</label>
                                 <div class="option-control">

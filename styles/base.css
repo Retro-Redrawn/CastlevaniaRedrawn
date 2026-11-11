@@ -1,0 +1,32 @@
+html, body {
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background-color:#000;
+    font-family: 'Philosopher', sans-serif;
+	font-size: 1em;
+	/* Safe area for mobile */
+    padding-top: env(safe-area-inset-top);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+}
+a{
+    color:currentColor;
+}
+#app{
+    width:100vw;
+    height:100vh;
+    position:absolute;
+}
+
+.settings__checkbox{
+    margin: 2px;
+}
+
+.content {
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+}
